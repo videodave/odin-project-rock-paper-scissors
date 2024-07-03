@@ -6,7 +6,16 @@ let result = Math.round(Math.random() * 3)
 console.log("this is the result - ", result)
 
 
-function playRound(humanChoice, computerChoice){
+function playRound(humanChoice){
+    let computerChoice
+    let randomNum = Math.random()
+    if(randomNum <= 0.33){
+        computerChoice= "rock"
+    }else if(randomNum <= 0.66){
+        computerChoice= "paper"
+    }else{
+        computerChoice= "scissors"
+    }
     if(humanChoice === computerChoice){
         return console.log("You tied")
     }else if(humanChoice === "rock"){
@@ -36,18 +45,20 @@ function playRound(humanChoice, computerChoice){
     }else{
         return console.log("error")
     }
+    document.getElementById("selection").style.display = "none"
+    document.getElementById("score").style.display = "block"
 }
 
 
 function playGame(){
-    for (let index = 1; index <= 5; index++) {
-        console.log(`Welcome to Round ${index}`)
-        console.log(`The score is You-${humanScore} to Computer-${computerScore}`)
-        playRound(getHumanChoice(), getComputerChoice())
-        if(index === 5){
-            console.log(`GAME OVER ---------- Final Score - You-${humanScore} to Computer-${computerScore}`)
-        }
-    }
+    // for (let index = 1; index <= 5; index++) {
+    //     console.log(`Welcome to Round ${index}`)
+    //     console.log(`The score is You-${humanScore} to Computer-${computerScore}`)
+    //     playRound(getHumanChoice(), getComputerChoice())
+    //     if(index === 5){
+    //         console.log(`GAME OVER ---------- Final Score - You-${humanScore} to Computer-${computerScore}`)
+    //     }
+    // }
 }
 
 
@@ -81,3 +92,12 @@ function getHumanChoice(){
 }
 
 playGame()
+
+function buttonTest(){
+    console.log("it works!")
+}
+
+function startGame(){
+    document.getElementById("selection").style.display = "block"
+    document.getElementById("startGameBtn").style.display = "none"
+}
